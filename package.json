@@ -1,0 +1,25 @@
+{
+  "name": "trpg-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TRPGEngine/Core.git"
+  },
+  "keywords": [
+    "trpg"
+  ],
+  "author": "moonrailgun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TRPGEngine/Core/issues"
+  },
+  "homepage": "https://github.com/TRPGEngine/Core#readme",
+  "dependencies": {
+    "socket.io": "^2.0.2"
+  }
+}
