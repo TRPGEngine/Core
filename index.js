@@ -1,4 +1,5 @@
 const io = require('socket.io');
+const Player = require('./lib/player');
 
 module.exports = Server;
 
@@ -10,6 +11,7 @@ function Server(options) {
     this.io = io(this.port);
     this.serverName = options.serverName || "TRPG";
     this.listener = {};
+    this.playerList = [];
 
     this.initEventListener();
 
@@ -19,34 +21,46 @@ function Server(options) {
   }
 }
 
+// 事件监听器
 Server.prototype.initEventListener = function() {
-  this.io.on('ping', function(socket) {
-    socket.emit('pong');
-  })
+  console.log("初始化事件监听器");
+  this.io.on('connection', (socket) => {
+    this.playerList.push(new Player(socket, {}));
+    console.log("用户登录成功, 当前人数:" + this.getPlayerCount());
 
-  let player = this.listener.player = this.io
-    .of('/player')
-    .on('login', function(socket) {
-      console.log(socket);
-      socket.emit('login', {
-        timestamp: new Date()
-      })
-      player.emit('login', {
-        timestamp: new Date()
-      })
-    })
-    .on('logout', function(socket) {
-      console.log(socket);
-      player.emit('logout', {
-        timestamp: new Date()
-      })
+    socket.on('message', (data) => {
+      console.log(data);
     });
 
-  let lobby = this.listener.player = this.io
-    .of('/lobby')
-    .on('chat', function(socket) {
-      lobby.emit('chat', {
-        timestamp: new Date()
-      })
-    })
+    socket.on('chat', (msg) => {
+      console.log(msg);
+      this.io.emit('chat', msg);
+    });
+
+    socket.on('disconnect', () => {
+      this.removePlayer(socket);
+      console.log("用户已离线, 当前人数:" + this.getPlayerCount());
+    });
+  });
+}
+
+// 玩家列表管理
+Server.prototype.getPlayerCount = function() {
+  return this.playerList.length;
+}
+Server.prototype.getPlayer = function(socket) {
+  let list = this.playerList;
+  for (player of list) {
+    if(player.socket === socket) {
+      return player;
+    }
+  }
+  return false;
+}
+Server.prototype.removePlayer = function(socket) {
+  let player = this.getPlayer(socket);
+  let index = this.playerList.indexOf(player);
+  if(index > -1) {
+    this.playerList.splice(index,1);
+  }
 }

@@ -6,7 +6,7 @@
     <script src="https://cdn.bootcss.com/socket.io/2.0.2/socket.io.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
     <script>
-      socket = io.connect("http://localhost:23256");
+      var socket = io.connect("http://127.0.0.1:23256");
       function init() {
         //创建WebSockets
 
@@ -20,17 +20,31 @@
         //   console.log(data);
         // })
 
-        socket.on('pong', function() {
-          console.log('pong');
+        socket.on('connect',function(){
+          // 连接成功
+          console.log('连接成功');
+
+          socket.on('chat', function(msg) {
+            console.log(msg);
+          });
         });
-        socket.emit('ping');
+        socket.on('disconnect',function(data){
+          // 连接断开
+          console.log('连接断开');
+        });
+        // socket.emit('ping');
+
+        socket.send('欢迎！');
       }
       init();
 
       function submit() {
-        var msg = $('text').val();
-        var lobby = io('/lobby');
-        lobby.emit("chat");
+        var msg = $('#text').val();
+        console.log(msg, socket);
+        socket.emit('chat', msg);
+        // socket.on('message', function(data) {
+        //   console.log('message', data);
+        // })
       }
     </script>
   </head>
