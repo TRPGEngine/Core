@@ -1,5 +1,6 @@
 const io = require('socket.io');
 const Player = require('./lib/player');
+const DB = require('./lib/db');
 
 module.exports = Server;
 
@@ -12,6 +13,7 @@ function Server(options) {
     this.serverName = options.serverName || "TRPG";
     this.listener = {};
     this.playerList = [];
+    this.db = DB();
 
     this.initEventListener();
 
