@@ -8,8 +8,9 @@ function Server(options) {
   if (!(this instanceof Server)) return new Server(options);
   try {
     options = options || {}
+    this.httpserver = options.httpserver || null;
     this.port = options.port || 23256;
-    this.io = io(this.port);
+    this.io = io(this.httpserver || this.port);
     this.serverName = options.serverName || "TRPG";
     this.listener = {};
     this.playerList = [];
@@ -25,7 +26,7 @@ function Server(options) {
 
 // 事件监听器
 Server.prototype.initEventListener = function() {
-  console.log("初始化事件监听器");
+  console.log("初始化WS事件监听器");
   this.io.on('connection', (socket) => {
     this.playerList.push(new Player(socket, {}));
     console.log("用户登录成功, 当前人数:" + this.getPlayerCount());
