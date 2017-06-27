@@ -12,7 +12,7 @@ function Server(options) {
     this.port = options.port || 23256;
     this.io = io(this.httpserver || this.port);
     this.serverName = options.serverName || "TRPG";
-    this.listener = {};
+    this.listener = [];
     this.playerList = [];
     this.db = DB();
 
@@ -45,16 +45,15 @@ Server.prototype.initEventListener = function() {
       console.log("用户已离线, 当前人数:" + this.getPlayerCount());
     });
 
-    for (var name in this.listener) {
-      if (object.hasOwnProperty(name)) {
-        socket.on(name, fn);
-      }
+    for (listen of this.listener) {
+      socket.on(listen.name, listen.fn);
     }
   });
 }
 // fn(socket)
 Server.prototype.addEventListener = function(name, fn) {
-  this.listener[name] = fn;
+  let _listener = {name, fn};
+  this.listener.push(_listener);
 }
 
 // 玩家列表管理
