@@ -44,7 +44,17 @@ Server.prototype.initEventListener = function() {
       this.removePlayer(socket);
       console.log("用户已离线, 当前人数:" + this.getPlayerCount());
     });
+
+    for (var name in this.listener) {
+      if (object.hasOwnProperty(name)) {
+        socket.on(name, fn);
+      }
+    }
   });
+}
+// fn(socket)
+Server.prototype.addEventListener = function(name, fn) {
+  this.listener[name] = fn;
 }
 
 // 玩家列表管理
