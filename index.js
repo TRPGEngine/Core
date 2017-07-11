@@ -31,9 +31,10 @@ Server.prototype.initEventListener = function() {
     this.playerList.push(new Player(socket, {}));
     console.log("用户登录成功, 当前人数:" + this.getPlayerCount());
 
-    socket.on('login', (info) => {
+    socket.on('login', (info, fn) => {
       let player = this.getPlayer(socket);
       player.setInfo(info);
+      fn();
     })
 
     socket.on('message', (data) => {
