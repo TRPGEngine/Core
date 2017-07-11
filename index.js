@@ -31,6 +31,11 @@ Server.prototype.initEventListener = function() {
     this.playerList.push(new Player(socket, {}));
     console.log("用户登录成功, 当前人数:" + this.getPlayerCount());
 
+    socket.on('login', (info) => {
+      let player = this.getPlayer(socket);
+      player.setInfo(info);
+    })
+
     socket.on('message', (data) => {
       console.log(data);
     });
@@ -41,6 +46,7 @@ Server.prototype.initEventListener = function() {
     });
 
     socket.on('disconnect', () => {
+      // TODO 保存用户信息
       this.removePlayer(socket);
       console.log("用户已离线, 当前人数:" + this.getPlayerCount());
     });
