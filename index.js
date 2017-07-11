@@ -29,7 +29,7 @@ Server.prototype.initEventListener = function() {
   console.log("初始化WS事件监听器");
   this.io.on('connection', (socket) => {
     this.playerList.push(new Player(socket, {}));
-    console.log("用户登录成功, 当前人数:" + this.getPlayerCount());
+    console.log("用户链接成功, 当前人数:" + this.getPlayerCount());
 
     socket.on('login', (info, fn) => {
       let player = this.getPlayer(socket);
