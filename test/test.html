@@ -39,9 +39,12 @@
       init();
 
       function submit() {
+        var eventName = $('#event').val();
         var msg = $('#text').val();
         console.log(msg, socket);
-        socket.emit('chat', msg);
+        socket.emit(eventName, {msg}, function(msg) {
+          console.log(msg);
+        });
         // socket.on('message', function(data) {
         //   console.log('message', data);
         // })
@@ -49,7 +52,8 @@
     </script>
   </head>
   <body>
-    <input id="text" type="text" value="" />
+    <input id="event" type="text" placeholder="事件名" value="" />
+    <input id="text" type="text" placeholder="内容" value="" />
     <button onclick="submit();">提交</button>
   </body>
 </html>
