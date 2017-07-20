@@ -20,16 +20,14 @@
   },
   "homepage": "https://github.com/TRPGEngine/Core#readme",
   "dependencies": {
-    "crypto": "0.0.3",
     "debug": "^2.6.8",
     "merge-descriptors": "^1.0.1",
     "orm": "^3.2.3",
     "socket.io": "^2.0.2",
-    "uuid": "^3.1.0"
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-live-server": "0.0.30",
-    "sqlite3": "^3.1.8"
+    "gulp-live-server": "0.0.30"
   }
 }
