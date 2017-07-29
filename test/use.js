@@ -1,5 +1,5 @@
 let core = require('../index')();
 
 core.run();
-console.log(core);
+// console.log(core);
 core.close();
