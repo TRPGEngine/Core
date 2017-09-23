@@ -22,7 +22,7 @@
   "dependencies": {
     "debug": "^2.6.8",
     "merge-descriptors": "^1.0.1",
-    "orm": "^3.2.3",
+    "orm": "^4.0.0",
     "socket.io": "^2.0.2",
     "sqlite3": "^3.1.8"
   },
