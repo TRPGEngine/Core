@@ -1,8 +1,10 @@
-let core = require('../index')();
+let core = require('../')();
 
 core.run();
-// console.log(core);
-(async function() {
-  console.log(await core.storage.connectAsync());
-  core.close();
-})()
+
+// var Koa = require('koa');
+// var app = new Koa();
+// var server = require('http').createServer(app.callback());
+// var io = require('socket.io')(server);
+// io.on('connection', function(){ /* … */ });
+// server.listen(23256);
