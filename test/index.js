@@ -54,7 +54,8 @@ describe('#basic', function() {
   it('base settings', function() {
     expect(app.settings).to.be.deep.equal({
       env: 'development',
-      port: '23256'
+      port: '23256',
+      verbose: false
     });
   })
 });
