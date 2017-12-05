@@ -21,14 +21,14 @@
   "homepage": "https://github.com/TRPGEngine/Core#readme",
   "dependencies": {
     "debug": "^2.6.8",
-    "koa": "^2.3.0",
+    "koa": "^2.4.1",
     "koa-cors": "0.0.16",
     "koa-logger": "^3.1.0",
     "log4js": "^2.3.12",
     "merge-descriptors": "^1.0.1",
-    "orm": "^4.0.0",
+    "orm": "git+https://github.com/moonrailgun/node-orm2.git",
     "socket.io": "^2.0.2",
-    "sqlite3": "^3.1.8"
+    "sqlite3": "^3.1.13"
   },
   "devDependencies": {
     "chai": "^4.1.1",
