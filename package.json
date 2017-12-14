@@ -24,7 +24,7 @@
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-cors": "0.0.16",
-    "koa-logger": "^3.1.0",
+    "koa-logger": "git+https://github.com/moonrailgun/logger.git#transporter",
     "log4js": "^2.3.12",
     "merge-descriptors": "^1.0.1",
     "orm": "git+https://github.com/moonrailgun/node-orm2.git",
