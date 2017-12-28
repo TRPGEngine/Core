@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/TRPGEngine/Core#readme",
   "dependencies": {
-    "debug": "^2.6.8",
+    "debug": "^3.1.0",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-cors": "0.0.16",
