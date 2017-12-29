@@ -25,9 +25,10 @@
     "koa-bodyparser": "^4.2.0",
     "koa-cors": "0.0.16",
     "koa-logger": "git+https://github.com/moonrailgun/logger.git#transporter",
+    "koa-session": "^5.5.1",
     "log4js": "^2.3.12",
     "merge-descriptors": "^1.0.1",
-    "orm": "git+https://github.com/moonrailgun/node-orm2.git",
+    "orm": "^4.0.2",
     "socket.io": "^2.0.2",
     "sqlite3": "^3.1.13"
   },
