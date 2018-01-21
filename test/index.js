@@ -55,7 +55,8 @@ describe('#basic', function() {
     expect(app.settings).to.be.deep.equal({
       env: 'development',
       port: '23256',
-      verbose: false
+      verbose: false,
+      webserviceHomepage: "",
     });
   })
 });
