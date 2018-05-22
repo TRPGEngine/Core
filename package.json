@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/TRPGEngine/Core#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "debug": "^3.1.0",
     "fs-extra": "^5.0.0",
     "koa": "^2.4.1",
