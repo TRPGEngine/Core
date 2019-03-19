@@ -30,7 +30,6 @@
     "koa-logger": "git+https://github.com/moonrailgun/logger.git#transporter",
     "koa-router": "^7.3.0",
     "koa-session": "^5.5.1",
-    "koa-socketio-session": "^1.0.0",
     "koa-static": "^4.0.3",
     "lodash": "^4.17.11",
     "log4js": "^2.8.0",
